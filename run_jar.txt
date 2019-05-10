@@ -1,0 +1,3 @@
+java -jar -Dapple.awt.UIElement="true" target/marcketplace-1.0-SNAPSHOT.jar -h
+java -cp target/simple-1.0-SNAPSHOT.jar org.sonatype.maven.teste.App
+

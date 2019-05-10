@@ -1,0 +1,5 @@
+com/sistemas/distribuidos/marcketplace/domain/enumerate/MessageActionEnum.class
+com/sistemas/distribuidos/marcketplace/domain/MessageMarcketplace.class
+com/sistemas/distribuidos/marcketplace/util/MarcketplaceConstates.class
+com/sistemas/distribuidos/marcketplace/App.class
+com/sistemas/distribuidos/marcketplace/config/NetworkAdapter.class
