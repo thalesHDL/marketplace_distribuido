@@ -1,5 +1,12 @@
+com/sistemas/distribuidos/marcketplace/domain/Anuncio.class
+com/sistemas/distribuidos/marcketplace/domain/MensagemAnuncio.class
+com/sistemas/distribuidos/marcketplace/domain/Usuario.class
 com/sistemas/distribuidos/marcketplace/domain/enumerate/MessageActionEnum.class
+com/sistemas/distribuidos/marcketplace/domain/Produto.class
 com/sistemas/distribuidos/marcketplace/domain/MessageMarcketplace.class
+com/sistemas/distribuidos/marcketplace/config/NetworkAdapter.class
+com/sistemas/distribuidos/marcketplace/domain/Comprador.class
+com/sistemas/distribuidos/marcketplace/domain/Vendedor.class
+com/sistemas/distribuidos/marcketplace/domain/Transacao.class
 com/sistemas/distribuidos/marcketplace/util/MarcketplaceConstates.class
 com/sistemas/distribuidos/marcketplace/App.class
-com/sistemas/distribuidos/marcketplace/config/NetworkAdapter.class

@@ -1,5 +1,12 @@
+/home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/MensagemAnuncio.java
 /home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/MessageMarcketplace.java
+/home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Usuario.java
+/home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Comprador.java
+/home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Produto.java
 /home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java
+/home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Vendedor.java
 /home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/enumerate/MessageActionEnum.java
+/home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Anuncio.java
+/home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Transacao.java
 /home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/util/MarcketplaceConstates.java
 /home/thales/Documents/projetos/marketplace_distribuido/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/config/NetworkAdapter.java
