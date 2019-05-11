@@ -2,27 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b9ebc51-6950-4843-8a88-4c9544d8e80f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Anuncio.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Anuncio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Comprador.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Comprador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/MensagemAnuncio.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/MensagemAnuncio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/MessageMarcketplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/MessageMarcketplace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Transacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Transacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/config/NetworkAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/config/NetworkAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Vendedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Vendedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/util/MarcketplaceConstates.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/resources/lib/lombok.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Anuncio.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Anuncio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Comprador.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Comprador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/MensagemAnuncio.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/MensagemAnuncio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/MessageMarcketplace.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/MessageMarcketplace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Produto.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Produto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Transacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Transacao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/config/NetworkAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/config/NetworkAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Vendedor.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Vendedor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/util/MarcketplaceConstates.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/marcketplace-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/marcketplace-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/marcketplace-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/marcketplace-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/surefire-reports/TEST-com.sistemas.distribuidos.marcketplace.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/surefire-reports/TEST-com.sistemas.distribuidos.marcketplace.AppTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/surefire-reports/com.sistemas.distribuidos.marcketplace.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/surefire-reports/com.sistemas.distribuidos.marcketplace.AppTest.txt" afterDir="false" />
     </list>
@@ -32,15 +26,38 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+            <state relative-caret-position="345">
+              <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/UsuarioDAO.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Anuncio.java">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -48,10 +65,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.java" />
+        <option value="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java" />
       </list>
     </option>
   </component>
@@ -159,6 +177,34 @@
               <item name="distribuidos" type="462c0819:PsiDirectoryNode" />
               <item name="marcketplace" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="marketplace_distribuido" type="b2602c69:ProjectViewProjectNode" />
+              <item name="marketplace_distribuido" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="marcketplace" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sistemas" type="462c0819:PsiDirectoryNode" />
+              <item name="distribuidos" type="462c0819:PsiDirectoryNode" />
+              <item name="marcketplace" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="marketplace_distribuido" type="b2602c69:ProjectViewProjectNode" />
+              <item name="marketplace_distribuido" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="marcketplace" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="sistemas" type="462c0819:PsiDirectoryNode" />
+              <item name="distribuidos" type="462c0819:PsiDirectoryNode" />
+              <item name="marcketplace" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -168,7 +214,14 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -227,10 +280,26 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/domain/Anuncio.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/UsuarioDAO.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        <state relative-caret-position="345">
+          <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
         </state>
       </provider>
     </entry>

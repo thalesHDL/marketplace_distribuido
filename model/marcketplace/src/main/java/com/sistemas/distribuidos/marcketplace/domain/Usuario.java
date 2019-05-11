@@ -53,5 +53,15 @@ public class Usuario {
 	}
 
 	// hash - equals - tostring
+	@Override
+	public String toString() {
+		return "Usuario: {" +
+				"id: " + this.id +
+				", nome: " + this.nome +
+				", email: " + this.email +
+				", senha: " + this.senha +
+				", saldo: " + this.saldo  
+			+ "}";
+	}
 
 }

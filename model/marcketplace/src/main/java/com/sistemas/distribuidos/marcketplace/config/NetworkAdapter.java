@@ -1,6 +1,6 @@
 package com.sistemas.distribuidos.marcketplace.config;
 
-import com.sistemas.distribuidos.marcketplace.util.MarcketplaceConstates;
+import com.sistemas.distribuidos.marcketplace.util.MarcketplaceConstantes;
 
 import org.jgroups.*;
 import org.jgroups.blocks.*;
@@ -33,7 +33,7 @@ public class NetworkAdapter extends ReceiverAdapter implements RequestHandler {
     	this.despacher = new MessageDispatcher(this.channel, this); // constroi o objeto que será responsavel pela troca de mensagens
 
     	this.channel.setReceiver(this); // seta a classe "NetworkAdapter" como a classe responsavel com lidar com os pacotes recebidos pelo canal
-    	this.channel.connect(MarcketplaceConstates.CHANNEL_MODEL); // conecta no canal dos models
+    	this.channel.connect(MarcketplaceConstantes.CHANNEL_MODEL); // conecta no canal dos models
     		this.eventLoop(); // enquanto a conexao estiver ativa, executar a funcao 'eventLoop'
     	this.channel.close(); // caso a conexao seja perdida fexa a conexao
 
