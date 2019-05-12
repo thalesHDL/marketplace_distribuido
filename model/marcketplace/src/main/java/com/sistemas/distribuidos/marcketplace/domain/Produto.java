@@ -2,9 +2,10 @@ package com.sistemas.distribuidos.marcketplace.domain;
 
 
 import java.math.BigDecimal;
+import java.io.Serializable;
 
 
-public class Produto {
+public class Produto implements Serializable {
 
 	// atributes
 	private Long id;

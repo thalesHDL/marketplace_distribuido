@@ -2,9 +2,10 @@ package com.sistemas.distribuidos.marcketplace.domain;
 
 
 import java.time.LocalDate;
+import java.io.Serializable;
 
 
-public class MensagemAnuncio {
+public class MensagemAnuncio implements Serializable {
 
 	// atributes
 	private Long id;

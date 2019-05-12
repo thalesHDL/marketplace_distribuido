@@ -7,6 +7,7 @@ public final class MarcketplaceConstantes {
 	public static final String CHANNEL_CONTROLLER = "MARCKETPLACE_CONTROLLER";
 	public static final String CHANNEL_VIEW = "MARCKETPLACE_VIEW";
 
-	public static final String FILE_PATH = "../../../../../../resources/db/";
+	public static final String DB_EXTENSION = ".db";
+	public static final int BUFFER_SIZE = 8192;
 
 }

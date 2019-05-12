@@ -1,7 +1,10 @@
 package com.sistemas.distribuidos.marcketplace.domain;
 
 
-public class Vendedor extends Usuario {
+import java.io.Serializable;
+
+
+public class Vendedor extends Usuario implements Serializable {
 
 	// constructors
 	public Vendedor() {
