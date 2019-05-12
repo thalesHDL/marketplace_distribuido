@@ -2,27 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b9ebc51-6950-4843-8a88-4c9544d8e80f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/UsuarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/util/MarcketplaceConstantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/util/MarcketplaceConstantes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/config/NetworkAdapter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/dao/AnuncioDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/dao/MensagemAnuncioDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/dao/ProdutoDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/dao/TransacaoDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/dao/UsuarioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/dao/UsuarioDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/dao/VendedorDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Anuncio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/MensagemAnuncio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/MessageMarcketplace.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Produto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Transacao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/Vendedor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/domain/enumerate/MessageActionEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/util/MarcketplaceConstantes.class" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/classes/com/sistemas/distribuidos/marcketplace/util/MarcketplaceConstantes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/lib/FastInfoset-1.2.15.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/lib/antlr-2.7.7.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/lib/byte-buddy-1.9.10.jar" beforeDir="false" />
@@ -47,13 +26,8 @@
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/marcketplace-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/marcketplace-1.0-SNAPSHOT.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/surefire-reports/TEST-com.sistemas.distribuidos.marcketplace.AppTest.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/marcketplace/target/surefire-reports/com.sistemas.distribuidos.marcketplace.AppTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/marcketplace/target/test-classes/com/sistemas/distribuidos/marcketplace/AppTest.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            <state relative-caret-position="150">
+              <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -79,15 +53,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+            <state relative-caret-position="270">
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/UsuarioDAO.java">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -285,7 +254,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24958494" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -326,15 +294,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/dao/GenericDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        <state relative-caret-position="270">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/marcketplace/src/main/java/com/sistemas/distribuidos/marcketplace/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state relative-caret-position="150">
+          <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
         </state>
       </provider>
     </entry>

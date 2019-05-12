@@ -1,4 +1,4 @@
-package com.sistemas.distribuidos.marcketplace.domain;
+package com.sistemas.distribuidos.marcketplace.config.message;
 
 
 public class MessageMarcketplace {
