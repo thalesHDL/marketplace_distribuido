@@ -47,5 +47,14 @@ public class Transacao implements Serializable {
 	}
 
 	// hash - equals - tostring
+	@Override
+	public String toString() {
+		return "Transacao: {" +
+				"id: " + this.id +
+				", " + this.comprador +
+				", " + this.produto +
+				", data: " + this.data
+			+ "}";
+	}
 
 }

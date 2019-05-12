@@ -11,4 +11,10 @@ public class Comprador extends Usuario implements Serializable {
 		// Empty constructor
 	}
 
+	// hash - equals - tostring
+	@Override
+	public String toString() {
+		return "Comprador: " + super.toString();
+	}
+
 }

@@ -54,5 +54,15 @@ public class MensagemAnuncio implements Serializable {
 	}
 
 	// hash - equals - tostring
+	@Override
+	public String toString() {
+		return "MensagemAnuncio: {" +
+				"id: " + this.id +
+				", " + this.anuncio +
+				", " + this.usuario +
+				", pergunta: " + this.pergunta +
+				", data: " + this.data
+			+ "}";
+	}
 
 }

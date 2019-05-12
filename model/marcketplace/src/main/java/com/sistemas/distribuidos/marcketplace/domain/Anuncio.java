@@ -41,5 +41,13 @@ public class Anuncio implements Serializable {
 	}
 
 	// hash - equals - tostring
+	@Override
+	public String toString() {
+		return "Anuncio: {" +
+				"id: " + this.id +
+				", " + this.produto +
+				", data: " + this.data
+			+ "}";
+	}
 
 }

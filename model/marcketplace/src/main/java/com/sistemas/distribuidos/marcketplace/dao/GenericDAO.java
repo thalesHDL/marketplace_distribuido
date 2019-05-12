@@ -16,14 +16,14 @@ public class GenericDAO<E> {
 		// Empty constructor
 	}
 
-	public E save(E obj) {
-		System.out.println(this.filePath);
+	public void save(E obj) {
+		System.out.println("Saving : " + obj + " - on : " + this.filePath);
 		FileUtil.writeBinaryFile(this.filePath, obj);
-		return obj;
 	}
 
 	public List<E> getAll() {
-		return null;
+		System.out.println("Getting all data from : " + this.filePath);
+		return (List<E>) FileUtil.readBinaryFile(this.filePath);
 	}
 
 }

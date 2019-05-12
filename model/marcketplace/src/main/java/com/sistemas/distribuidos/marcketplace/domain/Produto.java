@@ -61,5 +61,16 @@ public class Produto implements Serializable {
 	}
 
 	// hash - equals - tostring
+	@Override
+	public String toString() {
+		return "Produto: {" +
+				"id: " + this.id +
+				", nome: " + this.nome +
+				", descricao: " + this.descricao +
+				", " + this.vendedor +
+				", quantidade: " + this.quantidade + 
+				", preco: " + this.preco
+			+ "}";
+	}
 
 }

@@ -56,7 +56,7 @@ public class Usuario implements Serializable {
 	// hash - equals - tostring
 	@Override
 	public String toString() {
-		return "Usuario: {" +
+		return "{" +
 				"id: " + this.id +
 				", nome: " + this.nome +
 				", email: " + this.email +
