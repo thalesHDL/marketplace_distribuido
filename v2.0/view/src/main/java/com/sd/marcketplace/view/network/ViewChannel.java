@@ -5,20 +5,17 @@ import org.jgroups.Message;
 import org.jgroups.ReceiverAdapter;
 import org.jgroups.blocks.MessageDispatcher;
 import org.jgroups.blocks.RequestHandler;
+import org.jgroups.blocks.RequestOptions;
+import org.jgroups.blocks.ResponseMode;
 
-import java.nio.file.FileSystems;
+import com.sd.marcketplace.view.util.Constantes;
+import com.sd.marcketplace.view.util.MessageUtil;
+
 import java.util.Scanner;
 
 public class ViewChannel extends ReceiverAdapter implements RequestHandler, Runnable {
 	
-	private static final String FILE_CONFIG_CLUSTER = "src/resources/config/cluster/sequencer.xml";
-	private static final String CHANNEL_NAME = "View";
-	
-	private static final int CADASTRAR = 1;
-	private static final int COMPRAR = 2;
-	private static final int ENVIAR_MENSAGEM = 3;
-	private static final int SAIR = 4;
-	
+	private Scanner input;
 	private JChannel channel;
 	private MessageDispatcher despacher;
 	
@@ -45,49 +42,55 @@ public class ViewChannel extends ReceiverAdapter implements RequestHandler, Runn
 	 * @version 1.0
 	 * @since 2019-05-05
 	 **/
-	public void startChannel() throws Exception {		
-		this.channel = new JChannel(FILE_CONFIG_CLUSTER);
+	public void startChannel() throws Exception {	
+		this.input = new Scanner(System.in);
+		
+		this.channel = new JChannel(Constantes.FILE_CONFIG_CLUSTER);
 
 		this.despacher = new MessageDispatcher(this.channel, this);
 
 		this.channel.setReceiver(this);
 		
-		this.channel.connect(CHANNEL_NAME);
+		this.channel.connect(Constantes.VIEW_CHANNEL_NAME);
 		this.eventLoop();
 		this.channel.close();
 	}
 	
-	private void eventLoop() {
-		Scanner ler = new Scanner(System.in);
-		
+	private void eventLoop() throws Exception {
 		int opcao = 0;
-		while (opcao != SAIR) {
-			System.out.print(mountMenu());
-			opcao = Integer.parseInt(ler.next());
+		while (opcao != Constantes.SAIR) {
+			System.out.print(MessageUtil.menuOptions());
+			opcao = Integer.parseInt(this.input.next());
+			trataEscolha(opcao);
+		}
+		this.input.close();
+	}
+	
+	private void cadastrarProduto(String nomeProduto) throws Exception {
+		this.channel.connect(Constantes.MODEL_CHANNEL_NAME);
+		
+		Message message = new Message(null, "put produto ".concat(nomeProduto));
+		
+		enviaMulticast(message);
+	}
+	
+	private void enviaMulticast(Message msg) throws Exception {
+		RequestOptions opcoes = new RequestOptions(); 
+        opcoes.setMode(ResponseMode.GET_ALL);
+        opcoes.setAnycasting(false);
+		
+        this.despacher.castMessage(null, msg, opcoes);
+        
+        System.out.println("Enviado comando para cadastrar produto : ".concat(msg.getObject().toString()));
+	}
+	
+	private void trataEscolha(int acao) throws Exception {
+		if(acao == Constantes.CADASTRAR) {
+			System.out.print(MessageUtil.messageCadastrarProduto());
+			String nomeProduto = this.input.next();
+			this.cadastrarProduto(nomeProduto);
 		}
 	}
-	
-	private static String getPath() {
-		String path = FileSystems.getDefault().getPath(".").toAbsolutePath().toString();
-		return path.substring(0, path.length());
-	}
-	
-	private static String mountMenu() {
-		String menu = "";
-		menu = menu.concat("/*******************************************************************/\n");
-		menu = menu.concat("/**                                                               **/\n");
-		menu = menu.concat("/** 1) Cadastrar produto                                          **/\n");
-		menu = menu.concat("/** 2) Comprar produto                                            **/\n");
-		menu = menu.concat("/** 3) Enviar mensagem sobre produto                              **/\n");
-		menu = menu.concat("/** 4) Sair                                                       **/\n");
-		menu = menu.concat("/**                                                               **/\n");
-		menu = menu.concat("/*******************************************************************/\n");
-		menu = menu.concat("escolha: ");
-		return menu;
-	}
-	
-	
-	
 	
 	public Object handle(Message msg) throws Exception {
 		// TODO Auto-generated method stub
