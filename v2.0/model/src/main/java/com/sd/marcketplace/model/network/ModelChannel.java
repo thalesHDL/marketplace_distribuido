@@ -5,6 +5,7 @@ import org.jgroups.Message;
 import org.jgroups.ReceiverAdapter;
 import org.jgroups.blocks.MessageDispatcher;
 import org.jgroups.blocks.RequestHandler;
+import org.jgroups.util.Util;
 
 import com.sd.marcketplace.model.util.Constantes;
 
@@ -48,7 +49,12 @@ public class ModelChannel extends ReceiverAdapter implements RequestHandler, Run
 	}
 
 	private void eventLoop() {
-		
+		int t = 1000;
+		int t2 = 0;
+		while(t2 < t) {
+			Util.sleep(1000);
+			t2 += 1;
+		}
 	}
 
 	public void receive(Message msg) {
@@ -57,7 +63,8 @@ public class ModelChannel extends ReceiverAdapter implements RequestHandler, Run
 
 	public Object handle(Message msg) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("recebi a mensagem: " + msg.getSrc() + ": " + msg.getObject());
+		return msg;
 	}
 
 }

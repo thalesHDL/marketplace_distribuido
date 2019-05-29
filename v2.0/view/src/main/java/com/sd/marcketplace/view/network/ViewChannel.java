@@ -8,6 +8,7 @@ import org.jgroups.blocks.RequestHandler;
 import org.jgroups.blocks.RequestOptions;
 import org.jgroups.blocks.ResponseMode;
 
+import com.sd.marcketplace.view.network.message.SharedMessage;
 import com.sd.marcketplace.view.util.Constantes;
 import com.sd.marcketplace.view.util.MessageUtil;
 
@@ -15,18 +16,22 @@ import java.util.Scanner;
 
 public class ViewChannel extends ReceiverAdapter implements RequestHandler, Runnable {
 	
-	private Scanner input;
 	private JChannel channel;
 	private MessageDispatcher despacher;
+	private SharedMessage sharedMessage;
 	
 	
 	public ViewChannel() {
 		// Empty constructor
 	}
+	
+	public ViewChannel(SharedMessage sharedMessage) {
+		this.sharedMessage = sharedMessage;
+	}
 
 	public void run() {
 		try {
-			startChannel();
+			this.eventLoop();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,9 +47,7 @@ public class ViewChannel extends ReceiverAdapter implements RequestHandler, Runn
 	 * @version 1.0
 	 * @since 2019-05-05
 	 **/
-	public void startChannel() throws Exception {	
-		this.input = new Scanner(System.in);
-		
+	public void startChannel() throws Exception {		
 		this.channel = new JChannel(Constantes.FILE_CONFIG_CLUSTER);
 
 		this.despacher = new MessageDispatcher(this.channel, this);
@@ -57,37 +60,25 @@ public class ViewChannel extends ReceiverAdapter implements RequestHandler, Runn
 	}
 	
 	private void eventLoop() throws Exception {
+		Scanner input = new Scanner(System.in);
 		int opcao = 0;
 		while (opcao != Constantes.SAIR) {
 			System.out.print(MessageUtil.menuOptions());
-			opcao = Integer.parseInt(this.input.next());
-			trataEscolha(opcao);
+			opcao = Integer.parseInt(input.next());
+			trataEscolha(opcao, input);
 		}
-		this.input.close();
+		input.close();
 	}
 	
 	private void cadastrarProduto(String nomeProduto) throws Exception {
-		this.channel.connect(Constantes.MODEL_CHANNEL_NAME);
-		
-		Message message = new Message(null, "put produto ".concat(nomeProduto));
-		
-		enviaMulticast(message);
+		System.out.println("ViewChannel - cadastrarProduto");
+		this.sharedMessage.initCadastrarProduto(nomeProduto);
 	}
 	
-	private void enviaMulticast(Message msg) throws Exception {
-		RequestOptions opcoes = new RequestOptions(); 
-        opcoes.setMode(ResponseMode.GET_ALL);
-        opcoes.setAnycasting(false);
-		
-        this.despacher.castMessage(null, msg, opcoes);
-        
-        System.out.println("Enviado comando para cadastrar produto : ".concat(msg.getObject().toString()));
-	}
-	
-	private void trataEscolha(int acao) throws Exception {
+	private void trataEscolha(int acao, Scanner input) throws Exception {
 		if(acao == Constantes.CADASTRAR) {
 			System.out.print(MessageUtil.messageCadastrarProduto());
-			String nomeProduto = this.input.next();
+			String nomeProduto = input.next();
 			this.cadastrarProduto(nomeProduto);
 		}
 	}
