@@ -62,9 +62,8 @@ public class ModelChannel extends ReceiverAdapter implements RequestHandler, Run
 	}
 
 	public Object handle(Message msg) throws Exception {
-		// TODO Auto-generated method stub
 		System.out.println("recebi a mensagem: " + msg.getSrc() + ": " + msg.getObject());
-		return msg;
+		return true;
 	}
 
 }
