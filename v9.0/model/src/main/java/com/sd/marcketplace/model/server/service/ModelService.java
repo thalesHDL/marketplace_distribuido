@@ -1,6 +1,6 @@
 package com.sd.marcketplace.model.server.service;
 
-import javax.persistence.EntityTransaction;
+import java.util.List;
 
 import org.jgroups.Address;
 import com.sd.marcketplace.model.persistencia.table.TableUsuario;
@@ -22,11 +22,14 @@ public class ModelService extends ModelManager {
 	
 	protected Object modelPostOneUsuario(Usuario entity, String identifier) throws Exception {
 		TableUsuario table = usuarioMapper.toTable(entity);
-		EntityTransaction operacao;
+		// TODO: dar um jeito de criar fazer oi rollback
+//		EntityTransaction operacao;
 		try {
-			table = usuarioRepository.save(table);
+			table = repository.usuario().save(table);
 //			operacao = usuarioRepository.getTransaction();
 			entity = usuarioMapper.toEntity(table);
+			List<TableUsuario> l = repository.usuario().getAll();
+			System.out.println(l.toString());
 //			addOperation(identifier, operacao);
 			return PacoteUtil.createPacoteRecebido(entity, identifier);
 		} catch (Exception e) {
