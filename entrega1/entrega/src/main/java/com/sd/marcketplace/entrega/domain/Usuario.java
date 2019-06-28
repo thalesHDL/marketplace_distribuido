@@ -1,12 +1,7 @@
 package com.sd.marcketplace.entrega.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -14,15 +9,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@SuppressWarnings("serial")
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Usuario {
+public class Usuario implements Serializable {
 	
 	@EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue
     @Getter @Setter
 	private Long id;
 	
@@ -40,5 +33,11 @@ public class Usuario {
 	
 	@Getter @Setter
 	private BigDecimal saldo;
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", email=" + email + ", senha=" + senha + ", nome=" + nome + ", telefone="
+				+ telefone + ", saldo=" + saldo + "]";
+	}
 
 }
