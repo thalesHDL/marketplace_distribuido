@@ -1,1 +1,0 @@
-package com.sd.marcketplace.controle.comum.objeto;

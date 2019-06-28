@@ -28,7 +28,6 @@ public class ModelService extends ModelManager {
 			table = repository.usuario().save(table);
 //			operacao = usuarioRepository.getTransaction();
 			entity = usuarioMapper.toEntity(table);
-			List<TableUsuario> l = repository.usuario().getAll();
 			System.out.println(l.toString());
 //			addOperation(identifier, operacao);
 			return PacoteUtil.createPacoteRecebido(entity, identifier);
