@@ -1,7 +1,5 @@
 package com.sd.marcketplace.model.server.service;
 
-import java.util.List;
-
 import org.jgroups.Address;
 import com.sd.marcketplace.model.persistencia.table.TableUsuario;
 import com.sd.marcketplace.model.server.manager.ModelManager;
@@ -28,7 +26,6 @@ public class ModelService extends ModelManager {
 			table = repository.usuario().save(table);
 //			operacao = usuarioRepository.getTransaction();
 			entity = usuarioMapper.toEntity(table);
-			System.out.println(l.toString());
 //			addOperation(identifier, operacao);
 			return PacoteUtil.createPacoteRecebido(entity, identifier);
 		} catch (Exception e) {
