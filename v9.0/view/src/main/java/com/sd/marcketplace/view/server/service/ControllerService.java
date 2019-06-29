@@ -57,11 +57,27 @@ public class ControllerService extends ControllerManager {
 			Message mensagem = new Message(dest, pacote);
 			Opcoes op = new Opcoes(ResponseMode.GET_FIRST, false, controllerChannel.getAddress());
 						
-			Util.print("ENVIANDO: " + mensagem.toString());
 			Pacote result = controllerDispatcher.sendMessage(mensagem, op.getOptions());
-			Util.print("RESULTADO: " + result.toString());
+			List<Produto> listProdutos = (List<Produto>) getResoultado(result);
+			return listProdutos;
+		} catch (Exception e) {
+			Util.print(e.getMessage());
+			return new ArrayList<Produto>();
+		}
+	}
+	
+	protected List<Produto> getByFilterAnuncios() {
+		try {
+			Pacote pacote = new Pacote(Operation.GET_BY_FILTER, Entidade.PRODUTO, Classe.CONTROLE, null);
+			pacote.setHeader(HeaderUtil.createHeaderEnvio(null, null, pacote));
 			
-			List<Produto> listProdutos = (List<Produto>) getResoultado(pacote);
+			Address dest = sorteiaMemberClusterController();
+			
+			Message mensagem = new Message(dest, pacote);
+			Opcoes op = new Opcoes(ResponseMode.GET_FIRST, false, controllerChannel.getAddress());
+						
+			Pacote result = controllerDispatcher.sendMessage(mensagem, op.getOptions());
+			List<Produto> listProdutos = (List<Produto>) getResoultado(result);
 			return listProdutos;
 		} catch (Exception e) {
 			Util.print(e.getMessage());

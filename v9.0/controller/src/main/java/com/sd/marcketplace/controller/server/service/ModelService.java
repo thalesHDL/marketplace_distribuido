@@ -64,8 +64,7 @@ public class ModelService extends ModelManager {
 			
 			simpleVerifyResponse(result);
 			
-			pacote.setHeader(HeaderUtil.createHeaderRecebido());
-			return pacote;
+			return (Pacote) result.getFirst();
 		} catch (UtilException e) {
 			throw new Exception("Não é possível realizar esta operação, por favor tente novamente mais tarde");
 		}

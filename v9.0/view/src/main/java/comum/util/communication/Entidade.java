@@ -8,7 +8,13 @@ public enum Entidade implements Serializable {
 	CLUSTER_CONTROLE(2L),
 	CLUSTER_MODELO(3L),
 	USUARIO(4L),
-	PRODUTO(5L);
+	VENDEDOR(5L),
+	CONSUMIDOR(6L),
+	PRODUTO(7L),
+	VENDA(8L),
+	COMENTARIO(9L),
+	COMENTARIO_ANUCNIO(10L),
+	ANUNCIO(11L);
 	
 	
 	private Long value;

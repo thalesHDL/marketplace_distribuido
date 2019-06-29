@@ -2,6 +2,8 @@ package com.sd.marcketplace.view.server.observer;
 
 import java.util.Scanner;
 
+import com.sd.marcketplace.view.form.anuncio.AnuncioForm;
+import com.sd.marcketplace.view.form.anuncio.AnuncioFormOption;
 import com.sd.marcketplace.view.form.cadastro.usuario.CadastroUsuario;
 import com.sd.marcketplace.view.form.cadastro.usuario.CadastroUsuarioOption;
 import com.sd.marcketplace.view.form.home.Home;
@@ -103,27 +105,44 @@ public class ViewObserver extends ViewService {
 	}
 	
 	private void pageProdutos(Scanner input) throws Exception {
-		ProdutoForm produto = new ProdutoForm();
+		ProdutoForm produtoForm = new ProdutoForm();
 		ProdutoOption escolha = ProdutoOption.NONE;
 		
 		while(true) {
-			escolha = produto.start(input);
+			escolha = produtoForm.start(input);
 			
 			if (escolha.equals(ProdutoOption.LISTAR)) {
-				Util.print(getAllProdutos());
+				Util.printList(getAllProdutos());
 			} else if (escolha.equals(ProdutoOption.FILTRAR)) {
-				//getByFilterProdutos()// TODO: call page vendas
+				// TODO: call page vendas
 			} else if (escolha.equals(ProdutoOption.SELECIONAR)) {
-				// TODO: call page perfil
+				pageAnuncio(produtoForm.getProdutoSelecionado(), input);
 			} else if (escolha.equals(ProdutoOption.NOVO)) {
 				// TODO: call page saldo
 			} else if (escolha.equals(ProdutoOption.VOLTAR)) {
-				desconectar();
 				return;
 			}
 		}
 	}
 	
+	private void pageAnuncio(Long idProduto, Scanner input) throws Exception {
+		AnuncioForm produtoForm = new AnuncioForm();
+		AnuncioFormOption escolha = AnuncioFormOption.NONE;
+		
+		while(true) {
+			escolha = produtoForm.start(input);
+			
+			if (escolha.equals(AnuncioFormOption.LISTAR)) {
+				Util.printList(getByFilterAnuncios());
+			} else if (escolha.equals(AnuncioFormOption.FILTRAR)) {
+				// TODO: call page vendas
+			} else if (escolha.equals(AnuncioFormOption.SELECIONAR)) {
+//				Long id = produtoForm.getAnuncioSelecionado();
+			} else if (escolha.equals(AnuncioFormOption.VOLTAR)) {
+				return;
+			}
+		}
+	}
 	
 	
 	

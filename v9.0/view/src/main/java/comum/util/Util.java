@@ -1,5 +1,7 @@
 package comum.util;
 
+import java.util.List;
+
 public final class Util {
 	
 	public static final String VISAO_CHANNEL = "VisaoChannel";
@@ -26,4 +28,11 @@ public final class Util {
 		}
 	}
 	
+	public static void printList(List<?> list) {
+		String str = "\n";
+		for (Object obj: list) {
+			str += obj.toString() + "\n";
+		}
+		print(str);
+	}
 }
