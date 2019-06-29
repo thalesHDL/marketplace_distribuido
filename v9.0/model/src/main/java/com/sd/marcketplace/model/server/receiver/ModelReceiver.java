@@ -237,6 +237,8 @@ public class ModelReceiver extends ModelResource {
 			return modelGetByFilterClusterModel(pacote);
 		} else if (entidade.equals(Entidade.USUARIO)) {
 			return modelGetByFilterUsuario(pacote);
+		} else if (entidade.equals(Entidade.ANUNCIO)) {
+			return modelGetByFilterAnuncio(pacote);
 		}
 		return null;
 	}

@@ -2,6 +2,8 @@ package com.sd.marcketplace.view.server.observer;
 
 import java.util.Scanner;
 
+import com.sd.marcketplace.view.form.InfoAnuncio.InfoAnuncioForm;
+import com.sd.marcketplace.view.form.InfoAnuncio.InfoAnuncioFormOption;
 import com.sd.marcketplace.view.form.anuncio.AnuncioForm;
 import com.sd.marcketplace.view.form.anuncio.AnuncioFormOption;
 import com.sd.marcketplace.view.form.cadastro.usuario.CadastroUsuario;
@@ -128,23 +130,40 @@ public class ViewObserver extends ViewService {
 	}
 	
 	private void pageAnuncio(Long idProduto, Scanner input) throws Exception {
-		AnuncioForm produtoForm = new AnuncioForm();
+		AnuncioForm anuncioForm = new AnuncioForm();
 		AnuncioFormOption escolha = AnuncioFormOption.NONE;
 		
 		while(true) {
-			escolha = produtoForm.start(input);
+			escolha = anuncioForm.start(input);
 			
 			if (escolha.equals(AnuncioFormOption.LISTAR)) {
 				Anuncio anuncio = new Anuncio();
 				Produto produto = new Produto();
 				produto.setId(idProduto);
 				anuncio.setProduto(produto);
-				Util.printList(getByFilterAnuncios(anuncio)); // todo
+				Util.printList(getAnunciosByFilter(anuncio)); // TODO
 			} else if (escolha.equals(AnuncioFormOption.FILTRAR)) {
 				// TODO: call page vendas
 			} else if (escolha.equals(AnuncioFormOption.SELECIONAR)) {
-//				Long id = produtoForm.getAnuncioSelecionado();
+				pageInfoAnuncio(anuncioForm.getAnuncioSelecionado(), input);
 			} else if (escolha.equals(AnuncioFormOption.VOLTAR)) {
+				return;
+			}
+		}
+	}
+	
+	private void pageInfoAnuncio(Long idAnuncio, Scanner input) throws Exception {
+		InfoAnuncioForm infoAnuncioForm = new InfoAnuncioForm();
+		InfoAnuncioFormOption escolha = InfoAnuncioFormOption.NONE;
+		
+		while(true) {
+			escolha = infoAnuncioForm.start(input);
+			
+			if (escolha.equals(InfoAnuncioFormOption.INFO)) {
+				Util.printList(getAnuncioById(idAnuncio)); // TODO
+			} else if (escolha.equals(InfoAnuncioFormOption.COMPRAR)) {
+				// TODO: call page vendas
+			} else if (escolha.equals(InfoAnuncioFormOption.VOLTAR)) {
 				return;
 			}
 		}

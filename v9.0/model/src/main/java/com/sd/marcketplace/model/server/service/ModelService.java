@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.jgroups.Address;
 
+import com.sd.marcketplace.model.persistencia.table.TableAnuncio;
 import com.sd.marcketplace.model.persistencia.table.TableProduto;
 import com.sd.marcketplace.model.persistencia.table.TableUsuario;
 import com.sd.marcketplace.model.server.manager.ModelManager;
 
+import comum.domain.Anuncio;
 import comum.domain.Produto;
 import comum.domain.Usuario;
 import comum.util.PacoteUtil;
@@ -39,6 +41,17 @@ public class ModelService extends ModelManager {
 		try {
 			List<TableProduto> result = repository.produto().findAll();
 			List<Produto> retorno = mapper.produto().toEntity(result);
+			return PacoteUtil.createPacoteRecebido(retorno, identifier);
+		} catch (Exception e) {
+			throw new Exception();
+		}		
+	}
+	
+	protected Object modelGetByFilterAnuncio(Anuncio anuncio, String identifier) throws Exception {
+		try {
+//			List<TableAnuncio> result = repository.anuncio().findByFilter(filter);// TODO fazer o filtro
+			List<TableAnuncio> result = null;
+			List<Anuncio> retorno = mapper.anuncio().toEntity(result);
 			return PacoteUtil.createPacoteRecebido(retorno, identifier);
 		} catch (Exception e) {
 			throw new Exception();

@@ -65,7 +65,48 @@ public class ControllerManager extends BaseManager {
 			initClusterController(view);
 			isConnected = true; 
 		}
+		verifyClusterController(view.getMembers());
 	}
+	
+	protected void verifyClusterController(List<Address> list) {
+		List<Address> newMembers = new ArrayList<Address>(list);
+		List<Address> oldMembers = new ArrayList<Address>(clusterController);
+		removeSimilarity(oldMembers, newMembers);
+		
+		if (!oldMembers.isEmpty()) {
+			removeSuspects(oldMembers);
+		}
+	}
+	
+	protected void removeSuspects(List<Address> oldMembers) {
+		if(oldMembers.isEmpty()) {
+			return;
+		}
+		Address addr = oldMembers.get(0);
+		clusterController.remove(addr);
+		oldMembers.remove(0);
+		removeSuspects(oldMembers);
+	}
+	
+	protected void removeSimilarity(List<Address> l1, List<Address> l2) {
+		removeSimilarity(new ArrayList<Address>(l1), l1, l2);
+	}
+	
+	protected void removeSimilarity(List<Address> controle, List<Address> l1, List<Address> l2) {
+		if (controle.isEmpty()) {
+			return;
+		}
+		
+		Address addr = controle.get(0);
+		if (l2.contains(addr)) {
+			l2.remove(addr);
+			l1.remove(addr);
+		}
+		controle.remove(0);
+		removeSimilarity(controle, l1, l2);
+	}
+	
+	
 	
 	protected void initClusterController(View view) {
 		List<Address> membersNodeController = new ArrayList<Address>(getMembersNodeController());
@@ -123,34 +164,6 @@ public class ControllerManager extends BaseManager {
 			// TODO: tratar exception
 			e.printStackTrace();
 			return new ArrayList<Pacote>();
-		}
-	}
-	
-	
-	
-
-	protected void controllerSuspect(Address addr) {
-		if (clusterController.contains(addr)) {
-			Util.print("\nSuspeito: " + addr.toString());
-			clusterController.remove(addr);
-			removeMemberClusterController(addr);
-			Util.print("Cluster: " + clusterController.toString());
-		}
-	}
-	
-	protected void removeMemberClusterController(Address addr) {
-		Pacote pacote = new Pacote(Operation.DELETE_ONE, Entidade.CLUSTER_CONTROLE, Classe.VISAO, addr);
-		pacote.setHeader(HeaderUtil.createHeaderEnvio(null, null, pacote));
-		
-		Message mensagem = new Message(null, pacote);
-		Opcoes op = new Opcoes(ResponseMode.GET_NONE, false, viewChannel.getAddress());
-		
-		try {
-			Util.print("ENVIANDO: " + mensagem.toString());
-			viewDispatcher.castMessageWithFuture(null, mensagem, op.getOptions());
-		} catch (Exception e) {
-			// TODO: tratar exception
-			e.printStackTrace();
 		}
 	}
 	

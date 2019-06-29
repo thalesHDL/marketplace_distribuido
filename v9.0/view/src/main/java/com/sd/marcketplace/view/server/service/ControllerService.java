@@ -67,7 +67,7 @@ public class ControllerService extends ControllerManager {
 		}
 	}
 	
-	protected List<Anuncio> getByFilterAnuncios(Anuncio anuncio) {
+	protected List<Anuncio> getAnunciosByFilter(Anuncio anuncio) {
 		try {
 			Pacote pacote = new Pacote(Operation.GET_BY_FILTER, Entidade.ANUNCIO, Classe.CONTROLE, anuncio);
 			pacote.setHeader(HeaderUtil.createHeaderEnvio(null, null, pacote));
@@ -85,6 +85,28 @@ public class ControllerService extends ControllerManager {
 			return new ArrayList<Anuncio>();
 		}
 	}
+	
+	protected List<Anuncio> getAnuncioById(Long id) {
+		try {
+			Pacote pacote = new Pacote(Operation.GET_BY_ID, Entidade.ANUNCIO, Classe.CONTROLE, id);
+			pacote.setHeader(HeaderUtil.createHeaderEnvio(null, null, pacote));
+			
+			Address dest = sorteiaMemberClusterController();
+			
+			Message mensagem = new Message(dest, pacote);
+			Opcoes op = new Opcoes(ResponseMode.GET_FIRST, false, controllerChannel.getAddress());
+						
+			Pacote result = controllerDispatcher.sendMessage(mensagem, op.getOptions());
+			List<Anuncio> listProdutos = (List<Anuncio>) getResoultado(result);
+			return listProdutos;
+		} catch (Exception e) {
+			Util.print(e.getMessage());
+			return new ArrayList<Anuncio>();
+		}
+	}
+	
+	
+	
 	
 	
 	

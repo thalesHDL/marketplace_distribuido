@@ -10,12 +10,13 @@ public enum Operation implements Serializable {
 	PUT_ONE(5L),
 	DELETE(6L),
 	DELETE_ONE(4L),
-	GET(4L),
-	GET_ONE(6L),
-	GET_ALL(7L),
-	GET_BY_FILTER(8L),
-	COMMIT(9L),
-	ROLBACK(10L);
+	GET(5L),
+	GET_BY_ID(6L),
+	GET_ONE(7L),
+	GET_ALL(8L),
+	GET_BY_FILTER(9L),
+	COMMIT(10L),
+	ROLBACK(11L);
 
 	private Long value;
 	

@@ -54,14 +54,6 @@ public class ViewManager extends ControllerReceiver {
 		}
     }
 	
-	@Override
-	public void suspect(Address mbr) {
-		if (viewChannel.getView().getMembers().contains(mbr)) {
-			viewSuspect(mbr);
-		} else {
-			controllerSuspect(mbr);
-		}
-    }
 	
 	public void membershipListenerView(View view) {
 		// TODO

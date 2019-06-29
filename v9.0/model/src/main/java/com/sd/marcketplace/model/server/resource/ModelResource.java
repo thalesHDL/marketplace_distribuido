@@ -2,6 +2,7 @@ package com.sd.marcketplace.model.server.resource;
 
 import com.sd.marcketplace.model.server.observer.ModelObserver;
 
+import comum.domain.Anuncio;
 import comum.domain.Usuario;
 import comum.util.HeaderUtil;
 import comum.util.PacoteUtil;
@@ -236,5 +237,16 @@ public class ModelResource extends ModelObserver {
 	protected Object modelGetByFilterUsuario(Pacote pacote) {
 		// TODO: implementar
 		return null;
+	}
+	
+	protected Object modelGetByFilterAnuncio(Pacote pacote) {
+		try {
+			String operationIdentifier = pacote.getHeader().getToken();
+			Anuncio filter = (Anuncio) pacote.getContent();
+			return modelGetByFilterAnuncio(filter, operationIdentifier);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return PacoteUtil.createPacoteError("Houve um problema ao executar esta operação, por favor tente novamente masi tarde", pacote.getHeader().getToken());
+		}
 	}
 }

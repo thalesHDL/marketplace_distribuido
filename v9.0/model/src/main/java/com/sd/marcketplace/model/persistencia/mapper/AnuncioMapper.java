@@ -3,11 +3,13 @@ package com.sd.marcketplace.model.persistencia.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.sd.marcketplace.model.persistencia.table.TableAnuncio;
 
 import comum.domain.Anuncio;
 
-
+@Component
 public class AnuncioMapper {
 	public TableAnuncio toTable(Anuncio entity) {
 		TableAnuncio table = new TableAnuncio();
