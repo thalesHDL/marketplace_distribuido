@@ -3,8 +3,6 @@ package com.sd.marcketplace.model.server.manager;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.persistence.EntityTransaction;
-
 import org.jgroups.JChannel;
 import org.jgroups.Message;
 import org.jgroups.ReceiverAdapter;
@@ -17,6 +15,7 @@ import com.sd.marcketplace.model.persistencia.mapper.Mapper;
 import com.sd.marcketplace.model.persistencia.repository.Repository;
 
 import comum.domain.Usuario;
+import comum.util.communication.Pacote;
 
 public class BaseManager extends ReceiverAdapter implements RequestHandler {
 	
@@ -29,7 +28,7 @@ public class BaseManager extends ReceiverAdapter implements RequestHandler {
 	protected MessageDispatcher modelDispatcher;
 	
 	protected List<Usuario> usuariosLogados;
-	protected HashMap<String, EntityTransaction> operationQueue;
+	protected HashMap<String, Pacote> operationQueue = new HashMap<String, Pacote>();
 	
 	protected BaseManager() {
 		// Empty constructor
@@ -51,8 +50,14 @@ public class BaseManager extends ReceiverAdapter implements RequestHandler {
 		Thread.sleep(time);
 	}
 	
-	protected void addOperation(String identifier, EntityTransaction operacao) {
-		operationQueue.put(identifier, operacao);
+	protected Pacote getOperation(String identifier) {
+		return operationQueue.get(identifier);
+	}
+	
+	protected void addOperation(String identifier, Pacote operacao) {
+		if (identifier != null) {
+			operationQueue.put(identifier, operacao);
+		}
 	}
 	
 	protected void removeOperation(String identifier) {

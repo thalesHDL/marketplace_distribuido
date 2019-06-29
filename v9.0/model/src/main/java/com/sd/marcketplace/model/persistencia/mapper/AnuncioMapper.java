@@ -3,6 +3,7 @@ package com.sd.marcketplace.model.persistencia.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.sd.marcketplace.model.persistencia.table.TableAnuncio;
@@ -11,6 +12,12 @@ import comum.domain.Anuncio;
 
 @Component
 public class AnuncioMapper {
+	
+	@Autowired
+	private ProdutoMapper produtoMapper;
+	@Autowired
+	private UsuarioMapper usuarioMapper;
+	
 	public TableAnuncio toTable(Anuncio entity) {
 		TableAnuncio table = new TableAnuncio();
 		
@@ -18,6 +25,8 @@ public class AnuncioMapper {
 		table.setDescricao(entity.getDescricao());
 		table.setPreco(entity.getPreco());
 		table.setQuantidade(entity.getQuantidade());
+		table.setProduto(produtoMapper.toTable(entity.getProduto()));
+		table.setVendedor(usuarioMapper.toTable(entity.getVendedor()));
 		
 		return table;
 	}
@@ -29,6 +38,8 @@ public class AnuncioMapper {
 		entity.setDescricao(table.getDescricao());
 		entity.setPreco(table.getPreco());
 		entity.setQuantidade(table.getQuantidade());
+		entity.setProduto(produtoMapper.toEntity(table.getProduto()));
+		entity.setVendedor(usuarioMapper.toEntity(table.getVendedor()));
 		
 		return entity;
 	}

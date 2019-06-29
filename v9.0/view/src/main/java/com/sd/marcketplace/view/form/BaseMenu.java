@@ -19,6 +19,7 @@ public class BaseMenu<T extends Enum<T>> {
 	private T getEscolha() {
 //		Util.clearScreen(); // TODO: retirar quando der
 		
+		System.out.print("\n" + type.getSimpleName() + "\n");
 		System.out.print(montaMenu());
 		
 		Long escolha = this.input.nextLong();

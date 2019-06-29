@@ -1,6 +1,7 @@
 package comum.util.cluster;
 
 import org.jgroups.protocols.BARRIER;
+import org.jgroups.protocols.CENTRAL_LOCK;
 import org.jgroups.protocols.FD_ALL2;
 import org.jgroups.protocols.FRAG2;
 import org.jgroups.protocols.MERGE3;
@@ -106,6 +107,7 @@ public final class StackProtocolUtil {
 				.setValue("log_view_warnings", false)
 				.setValue("view_bundling", true)
 				.setValue("join_timeout", 5000))
+			.addProtocol(new CENTRAL_LOCK())
 			.addProtocol(new FRAG2()
 					.setValue("frag_size", 8192));
 		return baseProtocol;

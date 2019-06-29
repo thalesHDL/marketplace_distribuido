@@ -7,7 +7,9 @@ import org.jgroups.Address;
 import com.sd.marcketplace.controller.server.observer.ControllerObserver;
 
 import comum.domain.Anuncio;
+import comum.domain.Comentario;
 import comum.domain.Usuario;
+import comum.domain.Venda;
 import comum.util.HeaderUtil;
 import comum.util.PacoteUtil;
 import comum.util.Util;
@@ -62,7 +64,39 @@ public class ControllerResource extends ControllerObserver {
 			return PacoteUtil.createPacoteError(e.getMessage());
 		}
 	}
-
+	
+	protected Object controllerPostOneAnuncio(Pacote pacote) {
+		try {
+			Anuncio anuncio = (Anuncio) pacote.getContent();
+			return controllerPostOneAnunncio(anuncio);
+		} catch (Exception e) {
+			Util.print(e.getMessage());
+			return PacoteUtil.createPacoteError(e.getMessage());
+		}
+	}
+	
+	protected Object controllerPostOneComentario(Pacote pacote) {
+		try {
+			Comentario comentario = (Comentario) pacote.getContent();
+			return controllerPostOneComentario(comentario);
+		} catch (Exception e) {
+			Util.print(e.getMessage());
+			return PacoteUtil.createPacoteError(e.getMessage());
+		}
+	}
+	
+	protected Object controllerPostOneVenda(Pacote pacote) {
+		try {
+			Venda venda = (Venda) pacote.getContent();
+			return controllerPostOneVenda(venda);
+		} catch (Exception e) {
+			Util.print(e.getMessage());
+			return PacoteUtil.createPacoteError(e.getMessage());
+		}
+	}
+	
+	
+	
 	// ========== PUT
 	protected Object controllerPutAddress(Pacote pacote) {
 		// TODO: implementar
@@ -229,7 +263,7 @@ public class ControllerResource extends ControllerObserver {
 	
 	protected Object controllerGetAllProduto(Pacote pacote){
 		try {
-			return modelGetAllProduto();
+			return controllerGetAllProduto();
 		} catch (Exception e) {
 			return PacoteUtil.createPacoteError(e.getMessage());
 		}
@@ -252,14 +286,27 @@ public class ControllerResource extends ControllerObserver {
 	}
 
 	protected Object controllerGetByFilterUsuario(Pacote pacote) {
-		// TODO: implementar
-		return null;
+		try {
+			Usuario usuario = (Usuario) pacote.getContent();
+			return controllerGetByFilterUsuario(usuario);
+		} catch (Exception e) {
+			return PacoteUtil.createPacoteError(e.getMessage());
+		}
 	}
 	
 	protected Object controllerGetByFilterAnuncio(Pacote pacote) {
 		try {
 			Anuncio anuncio = (Anuncio) pacote.getContent();
-			return modelGetByFilterAnuncio(anuncio);
+			return controllerGetByFilterAnuncio(anuncio);
+		} catch (Exception e) {
+			return PacoteUtil.createPacoteError(e.getMessage());
+		}
+	}
+	
+	protected Object controllerGetByFilterComentario(Pacote pacote) {
+		try {
+			Comentario comentario = (Comentario) pacote.getContent();
+			return controllerGetByFilterComentario(comentario);
 		} catch (Exception e) {
 			return PacoteUtil.createPacoteError(e.getMessage());
 		}

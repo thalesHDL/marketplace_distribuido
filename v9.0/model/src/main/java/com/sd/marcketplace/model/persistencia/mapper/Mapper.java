@@ -14,6 +14,8 @@ public class Mapper {
 	private AnuncioMapper anuncioMapper;
 	@Autowired
 	private ComentarioMapper comentarioMapper;
+	@Autowired
+	private VendaMapper vendaMapper;
 	
 	
 	
@@ -28,8 +30,12 @@ public class Mapper {
 		return anuncioMapper;
 	}
 	
-	public ComentarioMapper comentariomapper() {
+	public ComentarioMapper comentario() {
 		return comentarioMapper;
+	}
+	
+	public VendaMapper venda() {
+		return vendaMapper;
 	}
 
 }

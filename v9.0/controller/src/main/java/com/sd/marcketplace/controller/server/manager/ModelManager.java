@@ -8,6 +8,7 @@ import org.jgroups.JChannel;
 import org.jgroups.Message;
 import org.jgroups.View;
 import org.jgroups.blocks.ResponseMode;
+import org.jgroups.blocks.locking.LockService;
 import org.jgroups.util.RspList;
 
 import comum.util.HeaderUtil;
@@ -35,6 +36,7 @@ public class ModelManager extends BaseManager {
 			modelChannel = new JChannel(false);
 			modelChannel.setProtocolStack(StackProtocolUtil.protocolModel());
 			modelChannel.getProtocolStack().init();
+			lockService = new LockService(modelChannel);
 		} catch (Exception e) {
 			// TODO: tratar exception
 			e.printStackTrace();

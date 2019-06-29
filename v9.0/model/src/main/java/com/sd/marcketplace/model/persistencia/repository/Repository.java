@@ -13,7 +13,9 @@ public class Repository {
 	@Autowired
 	private AnuncioRepository anuncioRepository;
 	@Autowired
-	private ComentariosRepository comentarioRepository;
+	private ComentarioRepository comentarioRepository;
+	@Autowired
+	private VendaRepository vendaRepository;
 	
 	
 	
@@ -26,8 +28,11 @@ public class Repository {
 	public AnuncioRepository anuncio() {
 		return anuncioRepository;
 	}
-	public ComentariosRepository comentario() {
+	public ComentarioRepository comentario() {
 		return comentarioRepository;
+	}
+	public VendaRepository venda() {
+		return vendaRepository;
 	}
 
 }

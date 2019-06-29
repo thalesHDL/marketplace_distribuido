@@ -118,6 +118,12 @@ public class ControllerReceiver extends ControllerResource {
 			return controllerPostOneClusterModel(pacote);
 		} else if (entidade.equals(Entidade.USUARIO)) {
 			return controllerPostOneUsuario(pacote);
+		} else if (entidade.equals(Entidade.ANUNCIO)) {
+			return controllerPostOneAnuncio(pacote);
+		} else if (entidade.equals(Entidade.COMENTARIO)) {
+			return controllerPostOneComentario(pacote);
+		} else if (entidade.equals(Entidade.VENDA)) {
+			return controllerPostOneVenda(pacote);
 		}
 		return null;
 	}
@@ -244,6 +250,8 @@ public class ControllerReceiver extends ControllerResource {
 			return controllerGetByFilterUsuario(pacote);
 		} else if (entidade.equals(Entidade.ANUNCIO)) {
 			return controllerGetByFilterAnuncio(pacote);
+		} else if (entidade.equals(Entidade.COMENTARIO)) {
+			return controllerGetByFilterComentario(pacote);
 		}
 		return null;
 	}

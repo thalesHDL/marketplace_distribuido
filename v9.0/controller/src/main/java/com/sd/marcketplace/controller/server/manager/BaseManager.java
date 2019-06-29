@@ -11,6 +11,7 @@ import org.jgroups.ReceiverAdapter;
 import org.jgroups.View;
 import org.jgroups.blocks.MessageDispatcher;
 import org.jgroups.blocks.RequestHandler;
+import org.jgroups.blocks.locking.LockService;
 
 public class BaseManager extends ReceiverAdapter implements RequestHandler {
 	
@@ -18,6 +19,7 @@ public class BaseManager extends ReceiverAdapter implements RequestHandler {
 	protected JChannel modelChannel;
 	protected MessageDispatcher controllerDispatcher;
 	protected MessageDispatcher modelDispatcher;
+	protected LockService lockService;
 	
 	protected List<Address> clusterModel;
 	

@@ -5,6 +5,7 @@ import org.jgroups.blocks.MessageDispatcher;
 
 import com.sd.marcketplace.model.server.resource.ModelResource;
 
+import comum.util.HeaderUtil;
 import comum.util.PacoteUtil;
 import comum.util.Util;
 import comum.util.communication.Classe;
@@ -85,6 +86,10 @@ public class ModelReceiver extends ModelResource {
 			return modelAnaliseGetAll(pacote);
 		} else if (operacao.equals(Operation.GET_BY_FILTER)) {
 			return modelAnaliseGetByFilter(pacote);
+		} else if (operacao.equals(Operation.COMMIT)) {
+			return commit(pacote);
+		} else if (operacao.equals(Operation.ROLBACK)) {
+			return rollback(pacote);
 		}
 		return null;
 	}
@@ -115,6 +120,12 @@ public class ModelReceiver extends ModelResource {
 			return modelPostOneClusterModel(pacote);
 		} else if (entidade.equals(Entidade.USUARIO)) {
 			return modelPostOneUsuario(pacote);
+		} else if (entidade.equals(Entidade.ANUNCIO)) {
+			return modelPostOneAnuncio(pacote);
+		} else if (entidade.equals(Entidade.COMENTARIO)) {
+			return modelPostOneComentario(pacote);
+		} else if (entidade.equals(Entidade.VENDA)) {
+			return modelPostOneVenda(pacote);
 		}
 		return null;
 	}
@@ -241,7 +252,31 @@ public class ModelReceiver extends ModelResource {
 			return modelGetByFilterUsuario(pacote);
 		} else if (entidade.equals(Entidade.ANUNCIO)) {
 			return modelGetByFilterAnuncio(pacote);
+		} else if (entidade.equals(Entidade.COMENTARIO)) {
+			return modelGetByFilterComentario(pacote);
 		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	protected Object commit(Pacote pacote) {
+		String identifier = pacote.getHeader().getToken();
+		removeOperation(identifier);
+		return null;
+	}
+	
+	protected Object rollback(Pacote pacote) {
+		String identifier = pacote.getHeader().getToken();
+		Pacote rollback = getOperation(identifier);
+		rollback.setHeader(HeaderUtil.createHeaderEnvio(null, null, rollback));
+		modelAnaliseOperacao(rollback);
 		return null;
 	}
 }

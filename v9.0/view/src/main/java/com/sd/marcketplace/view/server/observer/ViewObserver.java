@@ -1,5 +1,6 @@
 package com.sd.marcketplace.view.server.observer;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import com.sd.marcketplace.view.form.InfoAnuncio.InfoAnuncioForm;
@@ -19,7 +20,9 @@ import com.sd.marcketplace.view.form.produto.ProdutoOption;
 import com.sd.marcketplace.view.server.service.ViewService;
 
 import comum.domain.Anuncio;
+import comum.domain.Comentario;
 import comum.domain.Produto;
+import comum.domain.Venda;
 import comum.util.Util;
 
 public class ViewObserver extends ViewService {
@@ -76,10 +79,12 @@ public class ViewObserver extends ViewService {
 			
 			if (escolha.equals(LoginOption.CONECTAR)) {
 				usuario = login.getDadosUsuario();
+				usuario = controllerGetUsuarioByFilter(usuario);
+				if (usuario.getId() == null) {
+					Util.print("login invalido");
+					continue;
+				}
 				pageHome(input);
-				// TODO: verificar se o usuario esta cadastrado
-				//   se estiver mudar para a pageHome
-				//   se nao invormar que o usuario n esta correto e mostrar novamente o menu
 			} else if (escolha.equals(LoginOption.VOLTAR)) {
 				return;
 			}
@@ -117,12 +122,11 @@ public class ViewObserver extends ViewService {
 			
 			if (escolha.equals(ProdutoOption.LISTAR)) {
 				Util.printList(getAllProdutos());
-			} else if (escolha.equals(ProdutoOption.FILTRAR)) {
-				// TODO: call page vendas
-			} else if (escolha.equals(ProdutoOption.SELECIONAR)) {
+			}else if (escolha.equals(ProdutoOption.SELECIONAR)) {
 				pageAnuncio(produtoForm.getProdutoSelecionado(), input);
 			} else if (escolha.equals(ProdutoOption.NOVO)) {
-				// TODO: call page saldo
+				Anuncio anuncio = produtoForm.getDadosProduto();
+				controllerPostAnuncio(anuncio);
 			} else if (escolha.equals(ProdutoOption.VOLTAR)) {
 				return;
 			}
@@ -141,10 +145,8 @@ public class ViewObserver extends ViewService {
 				Produto produto = new Produto();
 				produto.setId(idProduto);
 				anuncio.setProduto(produto);
-				Util.printList(getAnunciosByFilter(anuncio)); // TODO
-			} else if (escolha.equals(AnuncioFormOption.FILTRAR)) {
-				// TODO: call page vendas
-			} else if (escolha.equals(AnuncioFormOption.SELECIONAR)) {
+				Util.printList(getAnunciosByFilter(anuncio));
+			}else if (escolha.equals(AnuncioFormOption.SELECIONAR)) {
 				pageInfoAnuncio(anuncioForm.getAnuncioSelecionado(), input);
 			} else if (escolha.equals(AnuncioFormOption.VOLTAR)) {
 				return;
@@ -158,11 +160,47 @@ public class ViewObserver extends ViewService {
 		
 		while(true) {
 			escolha = infoAnuncioForm.start(input);
-			
 			if (escolha.equals(InfoAnuncioFormOption.INFO)) {
-				Util.print(getAnuncioById(idAnuncio)); // TODO
+				Util.print(getAnuncioById(idAnuncio));
+			} else if (escolha.equals(InfoAnuncioFormOption.LISTAR_COMENTARIOS)) {
+				Comentario comentario = new Comentario();
+				Anuncio anuncio = new Anuncio();
+				anuncio.setId(idAnuncio);
+				comentario.setAnuncio(anuncio);
+				Util.print(getComemtariosByFilter(comentario)); // TODO
+			} else if (escolha.equals(InfoAnuncioFormOption.COMENTAR)) {
+				Anuncio anuncio = new Anuncio();
+				anuncio.setId(idAnuncio);
+				Comentario comentario = infoAnuncioForm.getDadosComentario();
+				comentario.setData(LocalDate.now());
+				comentario.setAnuncio(anuncio);
+				comentario.setUsuario(usuario);
+				controllerPostComentario(comentario);
 			} else if (escolha.equals(InfoAnuncioFormOption.COMPRAR)) {
-				// TODO: call page vendas
+				Long quantidade = infoAnuncioForm.getQuantidade();
+				Anuncio anuncio = new Anuncio();
+				anuncio.setId(idAnuncio);
+				Venda venda = new Venda();
+				venda.setQuantidade(quantidade);
+				venda.setData(LocalDate.now());
+				venda.setConsumidor(usuario);
+				venda.setAnuncio(anuncio);
+				
+				Anuncio a = getAnuncioById(idAnuncio);
+				Util.print(a);
+				Util.print(venda);
+				Util.print(usuario);
+				if (a.getQuantidade() < venda.getQuantidade()) {
+					Util.print("Não é possível comprar, pois não há quantidade suficiente");
+					continue;
+				}
+				
+				if (a.getPreco().doubleValue()*venda.getQuantidade() > usuario.getSaldo().doubleValue()) {
+					Util.print("Usuario não possui saldo suficiente suficiente");
+					continue;
+				}
+				
+				controllerPostVenda(venda);
 			} else if (escolha.equals(InfoAnuncioFormOption.VOLTAR)) {
 				return;
 			}

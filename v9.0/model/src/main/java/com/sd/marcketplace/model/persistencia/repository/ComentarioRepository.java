@@ -8,8 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import com.sd.marcketplace.model.persistencia.table.TableComentario;
 
-public interface ComentariosRepository extends JpaRepository<TableComentario, Long> {
-	@Query(value = "SELECT * FROM comentario WHERE id = ':id' ",nativeQuery=true)
-	public List<TableComentario> getComentariosByIdAnuncio( @Param("id") Long id);
+public interface ComentarioRepository extends JpaRepository<TableComentario, Long> {
+	
+	@Query(value = "SELECT tc FROM TableComentario tc WHERE tc.anuncio.id = :idAnuncio ")
+	public List<TableComentario> getComentariosByIdAnuncio(@Param("idAnuncio") Long idAnuncio);
 	
 }

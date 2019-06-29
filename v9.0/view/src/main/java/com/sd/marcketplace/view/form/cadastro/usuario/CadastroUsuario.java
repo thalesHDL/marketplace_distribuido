@@ -1,5 +1,7 @@
 package com.sd.marcketplace.view.form.cadastro.usuario;
 
+import java.math.BigDecimal;
+
 import com.sd.marcketplace.view.form.BaseMenu;
 
 import comum.domain.Usuario;
@@ -21,8 +23,10 @@ public class CadastroUsuario extends BaseMenu<CadastroUsuarioOption>  {
 		
 		System.out.print("Senha: ");
 		String senha = this.input.nextLine();
-		
-		return new Usuario(email, senha);
+		Usuario usuario = new Usuario(email, senha);
+		usuario.setNome("teste");
+		usuario.setSaldo(BigDecimal.valueOf(1000));
+		return usuario;
 	}
 	
 	
