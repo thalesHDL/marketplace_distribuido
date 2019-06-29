@@ -58,4 +58,14 @@ public class ModelService extends ModelManager {
 		}		
 	}
 	
+	protected Object modelGetOneAnuncio(Long id, String identifier) throws Exception {
+		try {
+			TableAnuncio result = repository.anuncio().getOne(id);
+			Anuncio retorno = mapper.anuncio().toEntity(result);
+			return PacoteUtil.createPacoteRecebido(retorno, identifier);
+		} catch (Exception e) {
+			throw new Exception();
+		}		
+	}
+	
 }

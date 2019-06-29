@@ -193,6 +193,18 @@ public class ControllerResource extends ControllerObserver {
 		// TODO: implementar
 		return null;
 	}
+	
+	protected Object controllerGetOneAnuncio(Pacote pacote) {
+		try {
+			Long id = (Long) pacote.getContent();
+			return controllerGetOneAnuncio(id);
+		} catch (Exception e) {
+			return PacoteUtil.createPacoteError(e.getMessage());
+		}
+	}
+	
+	
+	
 
 	// =========== GET ALL
 	protected Object controllerGetAllAddress(Pacote pacote) {

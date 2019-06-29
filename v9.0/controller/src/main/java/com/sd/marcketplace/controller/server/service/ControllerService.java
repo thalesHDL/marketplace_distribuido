@@ -37,6 +37,10 @@ public class ControllerService extends ControllerManager {
 		return modelGetByFilterAnuncio(anuncio);
 	}
 	
+	protected Pacote controllerGetOneAnuncio(Long id) throws Exception {
+		return mdoelGetOneAnuncio(id);
+	}
+	
 	
 	
 	

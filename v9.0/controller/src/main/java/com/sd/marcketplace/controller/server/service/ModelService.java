@@ -89,6 +89,24 @@ public class ModelService extends ModelManager {
 		}
 	}
 	
+	protected Pacote mdoelGetOneAnuncio(Long id) throws Exception {
+		Pacote pacote = createPacote(Operation.GET_ONE, Entidade.ANUNCIO, Classe.MODELO, id);
+		Message mensagem = createMessage(null, pacote);
+		Opcoes op = createOpcoes(ResponseMode.GET_FIRST, true, modelChannel.getAddress());
+				
+		try {
+			Util.print("ENVIANDO: " + mensagem.toString());
+			RspList<?> result = modelDispatcher.castMessage(clusterModel, mensagem, op.getOptions());
+			Util.print("RESULTADO: " + result);
+			
+			simpleVerifyResponse(result);
+			
+			return (Pacote) result.getFirst();
+		} catch (UtilException e) {
+			throw new Exception("Não é possível realizar esta operação, por favor tente novamente mais tarde");
+		}
+	}
+	
 	
 	
 	

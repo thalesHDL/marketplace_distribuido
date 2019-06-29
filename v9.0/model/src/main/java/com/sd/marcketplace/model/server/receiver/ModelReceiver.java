@@ -205,6 +205,8 @@ public class ModelReceiver extends ModelResource {
 			return modelGetOneClusterModel(pacote);
 		} else if (entidade.equals(Entidade.USUARIO)) {
 			return modelGetOneUsuario(pacote);
+		} else if (entidade.equals(Entidade.ANUNCIO)) {
+			return modelGetOneAnuncio(pacote);
 		}
 		return null;
 	}

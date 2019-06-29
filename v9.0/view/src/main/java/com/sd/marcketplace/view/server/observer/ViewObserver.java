@@ -160,7 +160,7 @@ public class ViewObserver extends ViewService {
 			escolha = infoAnuncioForm.start(input);
 			
 			if (escolha.equals(InfoAnuncioFormOption.INFO)) {
-				Util.printList(getAnuncioById(idAnuncio)); // TODO
+				Util.print(getAnuncioById(idAnuncio)); // TODO
 			} else if (escolha.equals(InfoAnuncioFormOption.COMPRAR)) {
 				// TODO: call page vendas
 			} else if (escolha.equals(InfoAnuncioFormOption.VOLTAR)) {

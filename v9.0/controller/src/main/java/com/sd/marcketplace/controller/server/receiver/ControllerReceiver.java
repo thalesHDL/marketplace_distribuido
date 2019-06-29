@@ -208,6 +208,8 @@ public class ControllerReceiver extends ControllerResource {
 			return controllerGetOneClusterModel(pacote);
 		} else if (entidade.equals(Entidade.USUARIO)) {
 			return controllerGetOneUsuario(pacote);
+		} else if (entidade.equals(Entidade.ANUNCIO)) {
+			return controllerGetOneAnuncio(pacote);
 		}
 		return null;
 	}

@@ -184,6 +184,21 @@ public class ModelResource extends ModelObserver {
 		// TODO: implementar
 		return null;
 	}
+	
+	protected Object modelGetOneAnuncio(Pacote pacote) {
+		try {
+			String operationIdentifier = pacote.getHeader().getToken();
+			Long id = (Long) pacote.getContent();
+			return modelGetOneAnuncio(id, operationIdentifier);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return PacoteUtil.createPacoteError("Houve um problema ao executar esta operação, por favor tente novamente masi tarde", pacote.getHeader().getToken());
+		}
+	}
+	
+	
+	
+	
 
 	// =========== GET ALL
 	protected Object modelGetAllAddress(Pacote pacote) {
