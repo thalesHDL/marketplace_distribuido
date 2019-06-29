@@ -1,6 +1,7 @@
 package comum.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Usuario implements Serializable {
 	private String nome;
 	private String email;
 	private String senha;
+	private BigDecimal saldo;
 	
 	
 	public Usuario(String email, String senha) {

@@ -9,6 +9,7 @@ import org.jgroups.blocks.ResponseMode;
 
 import com.sd.marcketplace.view.server.manager.ControllerManager;
 
+import comum.domain.Anuncio;
 import comum.domain.Produto;
 import comum.domain.Usuario;
 import comum.util.HeaderUtil;
@@ -66,7 +67,7 @@ public class ControllerService extends ControllerManager {
 		}
 	}
 	
-	protected List<Produto> getByFilterAnuncios() {
+	protected List<Produto> getByFilterAnuncios(Anuncio anuncio) {
 		try {
 			Pacote pacote = new Pacote(Operation.GET_BY_FILTER, Entidade.PRODUTO, Classe.CONTROLE, null);
 			pacote.setHeader(HeaderUtil.createHeaderEnvio(null, null, pacote));

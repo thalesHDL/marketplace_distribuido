@@ -14,19 +14,15 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario implements Serializable {
+public class Anuncio implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private String nome;
-	private String email;
-	private String senha;
-	private BigDecimal saldo;
+	private String desc;
+	private BigDecimal preco;
+	private Long qtd;
 	
-	
-	public Usuario(String email, String senha) {
-		this.email = email;
-		this.senha = senha;
-	}
+	private Produto produto;
+	private Usuario vendedor;
 }
