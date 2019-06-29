@@ -10,6 +10,11 @@ public class Mapper {
 	private UsuarioMapper usuarioMapper;
 	@Autowired
 	private ProdutoMapper produtoMapper;
+	@Autowired
+	private AnuncioMapper anuncioMapper;
+	@Autowired
+	private ComentarioMapper comentarioMapper;
+	
 	
 	
 	public UsuarioMapper usuario() {
@@ -17,6 +22,14 @@ public class Mapper {
 	}
 	public ProdutoMapper produto() {
 		return produtoMapper;
+	}
+	
+	public AnuncioMapper anuncio() {
+		return anuncioMapper;
+	}
+	
+	public ComentarioMapper comentariomapper() {
+		return comentarioMapper;
 	}
 
 }
