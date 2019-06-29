@@ -15,14 +15,14 @@ public final class Util {
 	}
 	
 	public static void print(String str) {
-		System.out.println(str);
+		System.out.println("\n" + str + "\n");
 	}
 	
 	public static void print(Object obj) {
 		if (obj == null) {
-			System.out.println("null");
+			System.out.println("\n null \n");
 		} else {
-			System.out.println(obj.toString());
+			System.out.println("\n" + obj.toString() + "\n");
 		}
 	}
 	

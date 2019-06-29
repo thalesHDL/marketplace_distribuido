@@ -213,6 +213,17 @@ public class ControllerResource extends ControllerObserver {
 		// TODO: implementar
 		return null;
 	}
+	
+	protected Object controllerGetAllProduto(Pacote pacote){
+		try {
+			pacote.setHeader(HeaderUtil.createHeaderRecebido());
+			pacote.setContent(controllerGetAllProduto());
+			return pacote;
+		} catch (Exception e) {
+			return PacoteUtil.createPacoteError(e.getMessage());
+		}
+		
+	}
 
 	// ========== GET BY FILTER
 	protected Object controllerGetByFilterAddress(Pacote pacote) {

@@ -28,6 +28,10 @@ public class ControllerService extends ControllerManager {
 		return modelPostOneUsuario(usuario);
 	}
 	
+	protected Pacote controllerGetAllProduto() throws Exception {
+		return modelGetAllProduto();
+	}
+	
 	
 	
 }

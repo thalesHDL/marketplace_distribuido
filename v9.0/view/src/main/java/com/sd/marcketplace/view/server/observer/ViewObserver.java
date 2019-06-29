@@ -10,7 +10,11 @@ import com.sd.marcketplace.view.form.inicial.Inicial;
 import com.sd.marcketplace.view.form.inicial.InicialOption;
 import com.sd.marcketplace.view.form.login.Login;
 import com.sd.marcketplace.view.form.login.LoginOption;
+import com.sd.marcketplace.view.form.produto.ProdutoForm;
+import com.sd.marcketplace.view.form.produto.ProdutoOption;
 import com.sd.marcketplace.view.server.service.ViewService;
+
+import comum.util.Util;
 
 public class ViewObserver extends ViewService {
 	
@@ -50,7 +54,7 @@ public class ViewObserver extends ViewService {
 		while(true) {
 			escolha = cadastroUsuario.start(input);
 			if (escolha.equals(CadastroUsuarioOption.CADASTRAR)) {
-				usuario = viewPostUsuario(cadastroUsuario.getDadosUsuario());
+				usuario = controllerPostUsuario(cadastroUsuario.getDadosUsuario());
 			} else if (escolha.equals(CadastroUsuarioOption.VOLTAR)) {
 				return;
 			}
@@ -84,7 +88,7 @@ public class ViewObserver extends ViewService {
 			escolha = home.start(input);
 			
 			if (escolha.equals(HomeOption.PRODUTOS)) {
-				// TODO: call page produtos
+				pageProdutos(input);
 			} else if (escolha.equals(HomeOption.VENDAS)) {
 				// TODO: call page vendas
 			} else if (escolha.equals(HomeOption.PERFIL)) {
@@ -97,6 +101,40 @@ public class ViewObserver extends ViewService {
 			}
 		}
 	}
+	
+	private void pageProdutos(Scanner input) throws Exception {
+		ProdutoForm produto = new ProdutoForm();
+		ProdutoOption escolha = ProdutoOption.NONE;
+		
+		while(true) {
+			escolha = produto.start(input);
+			
+			if (escolha.equals(ProdutoOption.LISTAR)) {
+				Util.print(getAllProdutos());
+			} else if (escolha.equals(ProdutoOption.FILTRAR)) {
+				//getByFilterProdutos()// TODO: call page vendas
+			} else if (escolha.equals(ProdutoOption.SELECIONAR)) {
+				// TODO: call page perfil
+			} else if (escolha.equals(ProdutoOption.NOVO)) {
+				// TODO: call page saldo
+			} else if (escolha.equals(ProdutoOption.VOLTAR)) {
+				desconectar();
+				return;
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private void desconectar() {
 		usuario = null;

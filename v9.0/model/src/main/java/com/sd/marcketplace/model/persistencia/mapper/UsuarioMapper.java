@@ -1,5 +1,8 @@
 package com.sd.marcketplace.model.persistencia.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.sd.marcketplace.model.persistencia.table.TableUsuario;
@@ -30,5 +33,22 @@ public class UsuarioMapper {
 		
 		return entity;
 	}
+	
+	public List<TableUsuario> toTable(List<Usuario> list) {
+		List<TableUsuario> result = new ArrayList<TableUsuario>();
+		for (Usuario entity: list) {
+			result.add(toTable(entity));
+		}
+		return result;
+	}
+	
+	public List<Usuario> toEntity(List<TableUsuario> list) {
+		List<Usuario> result = new ArrayList<Usuario>();
+		for (TableUsuario table: list) {
+			result.add(toEntity(table));
+		}
+		return result;
+	}
+
 
 }

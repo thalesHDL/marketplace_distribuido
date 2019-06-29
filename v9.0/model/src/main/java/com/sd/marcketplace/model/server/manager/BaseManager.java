@@ -13,7 +13,7 @@ import org.jgroups.blocks.MessageDispatcher;
 import org.jgroups.blocks.RequestHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sd.marcketplace.model.persistencia.mapper.UsuarioMapper;
+import com.sd.marcketplace.model.persistencia.mapper.Mapper;
 import com.sd.marcketplace.model.persistencia.repository.Repository;
 
 import comum.domain.Usuario;
@@ -22,9 +22,8 @@ public class BaseManager extends ReceiverAdapter implements RequestHandler {
 	
 	@Autowired
 	protected Repository repository;
-	
 	@Autowired
-	protected UsuarioMapper usuarioMapper;
+	protected Mapper mapper;
 	
 	protected JChannel modelChannel;
 	protected MessageDispatcher modelDispatcher;

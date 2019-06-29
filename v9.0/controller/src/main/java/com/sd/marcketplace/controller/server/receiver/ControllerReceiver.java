@@ -223,7 +223,10 @@ public class ControllerReceiver extends ControllerResource {
 			return controllerGetAllClusterModel(pacote);
 		} else if (entidade.equals(Entidade.USUARIO)) {
 			return controllerGetAllUsuario(pacote);
+		} else if (entidade.equals(Entidade.PRODUTO)) {
+			return controllerGetAllProduto(pacote);
 		}
+		
 		return null;
 	}
 	

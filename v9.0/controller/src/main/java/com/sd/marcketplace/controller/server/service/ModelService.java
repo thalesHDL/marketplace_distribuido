@@ -52,6 +52,25 @@ public class ModelService extends ModelManager {
 		}
 	}
 	
+	protected Pacote modelGetAllProduto() throws Exception {
+		Pacote pacote = createPacote(Operation.GET_ALL, Entidade.PRODUTO, Classe.MODELO, null);
+		Message mensagem = createMessage(null, pacote);
+		Opcoes op = createOpcoes(ResponseMode.GET_FIRST, true, modelChannel.getAddress());
+				
+		try {
+			Util.print("ENVIANDO: " + mensagem.toString());
+			RspList<?> result = modelDispatcher.castMessage(clusterModel, mensagem, op.getOptions());
+			Util.print("RESULTADO: " + result);
+			
+			simpleVerifyResponse(result);
+			
+			pacote.setHeader(HeaderUtil.createHeaderRecebido());
+			return pacote;
+		} catch (UtilException e) {
+			throw new Exception("Não é possível realizar esta operação, por favor tente novamente mais tarde");
+		}
+	}
+	
 	
 	
 	
@@ -121,7 +140,13 @@ public class ModelService extends ModelManager {
 	
 	
 
-	
+	protected void simpleVerifyResponse(RspList<?> retorno) throws Exception {
+		if (retorno.isEmpty())
+			throw new UtilException();
+		Pacote pacote = (Pacote) retorno.getFirst();
+		if (pacote.getHeader().getStatus().equals(Status.ERROR))
+			throw new UtilException();
+	}
 	
 	protected void verifyResponse(RspList<?> retorno) throws Exception {
 		if (retorno.isEmpty())

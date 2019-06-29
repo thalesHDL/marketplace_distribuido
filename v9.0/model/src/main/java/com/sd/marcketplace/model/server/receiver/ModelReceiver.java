@@ -220,6 +220,8 @@ public class ModelReceiver extends ModelResource {
 			return modelGetAllClusterModel(pacote);
 		} else if (entidade.equals(Entidade.USUARIO)) {
 			return modelGetAllUsuario(pacote);
+		} else if (entidade.equals(Entidade.PRODUTO)) {
+			return modelGetAllProduto(pacote);
 		}
 		return null;
 	}
