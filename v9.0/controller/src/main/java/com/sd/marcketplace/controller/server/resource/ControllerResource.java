@@ -6,6 +6,7 @@ import org.jgroups.Address;
 
 import com.sd.marcketplace.controller.server.observer.ControllerObserver;
 
+import comum.domain.Anuncio;
 import comum.domain.Usuario;
 import comum.util.HeaderUtil;
 import comum.util.PacoteUtil;
@@ -241,5 +242,14 @@ public class ControllerResource extends ControllerObserver {
 	protected Object controllerGetByFilterUsuario(Pacote pacote) {
 		// TODO: implementar
 		return null;
+	}
+	
+	protected Object controllerGetByFilterAnuncio(Pacote pacote) {
+		try {
+			Anuncio anuncio = (Anuncio) pacote.getContent();
+			return modelGetByFilterAnuncio(anuncio);
+		} catch (Exception e) {
+			return PacoteUtil.createPacoteError(e.getMessage());
+		}
 	}
 }

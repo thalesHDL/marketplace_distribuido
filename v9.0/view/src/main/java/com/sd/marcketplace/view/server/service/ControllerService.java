@@ -67,9 +67,9 @@ public class ControllerService extends ControllerManager {
 		}
 	}
 	
-	protected List<Produto> getByFilterAnuncios(Anuncio anuncio) {
+	protected List<Anuncio> getByFilterAnuncios(Anuncio anuncio) {
 		try {
-			Pacote pacote = new Pacote(Operation.GET_BY_FILTER, Entidade.PRODUTO, Classe.CONTROLE, null);
+			Pacote pacote = new Pacote(Operation.GET_BY_FILTER, Entidade.ANUNCIO, Classe.CONTROLE, anuncio);
 			pacote.setHeader(HeaderUtil.createHeaderEnvio(null, null, pacote));
 			
 			Address dest = sorteiaMemberClusterController();
@@ -78,11 +78,11 @@ public class ControllerService extends ControllerManager {
 			Opcoes op = new Opcoes(ResponseMode.GET_FIRST, false, controllerChannel.getAddress());
 						
 			Pacote result = controllerDispatcher.sendMessage(mensagem, op.getOptions());
-			List<Produto> listProdutos = (List<Produto>) getResoultado(result);
+			List<Anuncio> listProdutos = (List<Anuncio>) getResoultado(result);
 			return listProdutos;
 		} catch (Exception e) {
 			Util.print(e.getMessage());
-			return new ArrayList<Produto>();
+			return new ArrayList<Anuncio>();
 		}
 	}
 	

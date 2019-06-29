@@ -16,6 +16,8 @@ import com.sd.marcketplace.view.form.produto.ProdutoForm;
 import com.sd.marcketplace.view.form.produto.ProdutoOption;
 import com.sd.marcketplace.view.server.service.ViewService;
 
+import comum.domain.Anuncio;
+import comum.domain.Produto;
 import comum.util.Util;
 
 public class ViewObserver extends ViewService {
@@ -133,7 +135,11 @@ public class ViewObserver extends ViewService {
 			escolha = produtoForm.start(input);
 			
 			if (escolha.equals(AnuncioFormOption.LISTAR)) {
-				Util.printList(getByFilterAnuncios(null)); // todo
+				Anuncio anuncio = new Anuncio();
+				Produto produto = new Produto();
+				produto.setId(idProduto);
+				anuncio.setProduto(produto);
+				Util.printList(getByFilterAnuncios(anuncio)); // todo
 			} else if (escolha.equals(AnuncioFormOption.FILTRAR)) {
 				// TODO: call page vendas
 			} else if (escolha.equals(AnuncioFormOption.SELECIONAR)) {

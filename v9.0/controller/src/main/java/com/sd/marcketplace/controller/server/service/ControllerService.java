@@ -6,6 +6,7 @@ import org.jgroups.Address;
 
 import com.sd.marcketplace.controller.server.manager.ControllerManager;
 
+import comum.domain.Anuncio;
 import comum.domain.Usuario;
 
 import comum.util.communication.Pacote;
@@ -31,6 +32,11 @@ public class ControllerService extends ControllerManager {
 	protected Pacote controllerGetAllProduto() throws Exception {
 		return modelGetAllProduto();
 	}
+	
+	protected Pacote controllerGetByFilterAnuncio(Anuncio anuncio) throws Exception {
+		return modelGetByFilterAnuncio(anuncio);
+	}
+	
 	
 	
 	

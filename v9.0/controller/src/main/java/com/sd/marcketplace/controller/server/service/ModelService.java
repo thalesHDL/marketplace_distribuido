@@ -12,6 +12,7 @@ import org.jgroups.util.RspList;
 
 import com.sd.marcketplace.controller.server.manager.ModelManager;
 
+import comum.domain.Anuncio;
 import comum.domain.Usuario;
 import comum.util.HeaderUtil;
 import comum.util.Util;
@@ -54,6 +55,24 @@ public class ModelService extends ModelManager {
 	
 	protected Pacote modelGetAllProduto() throws Exception {
 		Pacote pacote = createPacote(Operation.GET_ALL, Entidade.PRODUTO, Classe.MODELO, null);
+		Message mensagem = createMessage(null, pacote);
+		Opcoes op = createOpcoes(ResponseMode.GET_FIRST, true, modelChannel.getAddress());
+				
+		try {
+			Util.print("ENVIANDO: " + mensagem.toString());
+			RspList<?> result = modelDispatcher.castMessage(clusterModel, mensagem, op.getOptions());
+			Util.print("RESULTADO: " + result);
+			
+			simpleVerifyResponse(result);
+			
+			return (Pacote) result.getFirst();
+		} catch (UtilException e) {
+			throw new Exception("Não é possível realizar esta operação, por favor tente novamente mais tarde");
+		}
+	}
+	
+	protected Pacote modelGetByFilterAnuncio(Anuncio anuncio) throws Exception {
+		Pacote pacote = createPacote(Operation.GET_BY_FILTER, Entidade.ANUNCIO, Classe.MODELO, anuncio);
 		Message mensagem = createMessage(null, pacote);
 		Opcoes op = createOpcoes(ResponseMode.GET_FIRST, true, modelChannel.getAddress());
 				

@@ -226,7 +226,6 @@ public class ControllerReceiver extends ControllerResource {
 		} else if (entidade.equals(Entidade.PRODUTO)) {
 			return controllerGetAllProduto(pacote);
 		}
-		
 		return null;
 	}
 	
@@ -241,6 +240,8 @@ public class ControllerReceiver extends ControllerResource {
 			return controllerGetByFilterClusterModel(pacote);
 		} else if (entidade.equals(Entidade.USUARIO)) {
 			return controllerGetByFilterUsuario(pacote);
+		} else if (entidade.equals(Entidade.ANUNCIO)) {
+			return controllerGetByFilterAnuncio(pacote);
 		}
 		return null;
 	}
