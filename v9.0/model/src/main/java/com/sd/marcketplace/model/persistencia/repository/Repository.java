@@ -10,6 +10,10 @@ public class Repository {
 	private UsuarioRepository usuarioRepository;
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	@Autowired
+	private AnuncioRepository anuncioRepository;
+	@Autowired
+	private ComentariosRepository comentarioRepository;
 	
 	
 	
@@ -18,6 +22,12 @@ public class Repository {
 	}
 	public ProdutoRepository produto() {
 		return produtoRepository;
+	}
+	public AnuncioRepository anuncio() {
+		return anuncioRepository;
+	}
+	public ComentariosRepository comentario() {
+		return comentarioRepository;
 	}
 
 }
