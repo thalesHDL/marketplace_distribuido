@@ -130,7 +130,7 @@ O cluster Model possui os membros que farão a execução do que foi requisitado
 
 Cada contexto possui um proposito diferente e por isso cada um possui clusters diferente, a imagem abaixo ilustra como os ccluster foram usados para formar os contextos:
 
-![alt text](https://github.com/thalesHDL/marketplace_distribuido/blob/master/organizacao_sistema.jpeg)
+![alt text](https://github.com/thalesHDL/marketplace_distribuido/blob/master/organizacao_contextos.jpeg)
 
 Como pode ser observado na imagem, o Contexto de Requisição faz uso dos Cluster View e Controller, o Contexto de Coordenação faz uso dos Cluster Controller e Model e por fim o Contexto de Execução faz uso apenas do Cluster Model
 
