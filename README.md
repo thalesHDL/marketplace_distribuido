@@ -132,6 +132,8 @@ Cada contexto possui um proposito diferente e por isso cada um possui clusters d
 
 ![alt text](https://github.com/thalesHDL/marketplace_distribuido/blob/master/organizacao_sistema.jpeg)
 
+Como pode ser observado na imagem, o Contexto de Requisição faz uso dos Cluster View e Controller, o Contexto de Coordenação faz uso dos Cluster Controller e Model e por fim o Contexto de Execução faz uso apenas do Cluster Model
+
 
 ### 2.2 Contexto
 	
