@@ -126,6 +126,13 @@ O membros do Cluster View praticamente não se comunicam eles apenas se comunica
 O cluster Model possui os membros que farão a execução do que foi requisitado pelo usuário, por tanto, é necessário que ele possua o protocolo CENTRAL_LOCK, para garantir que nenhum processo acessará simultâneamente o mesmo recurso.
 
 
+### 2.1.5 Organização Contextos
+
+Cada contexto possui um proposito diferente e por isso cada um possui clusters diferente, a imagem abaixo ilustra como os ccluster foram usados para formar os contextos:
+
+![alt text](https://github.com/thalesHDL/marketplace_distribuido/blob/master/organizacao_sistema.jpeg)
+
+
 ### 2.2 Contexto
 	
 Como dito anteriormente o contexto nada mais é, que uma divisão superficial do sistema, baseada nas funcionalidades presente em cada contexto. No sistema existem tres contextos, um que trata do recebimento das requisições feitas pelo usuário (Requisição), outro que trata da execução dessas requisições  (Execução), e um ultimo contexto que age entre os dois anteriores realizando a comunicação entre eles (Coordenação).
