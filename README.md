@@ -4,8 +4,7 @@
 Este relátorio foi divido em duas seções principais:
 1. Padrões
 2. Funcionamento
-2. Código
-
+3. Código
 
 
 ## 1 Padrões
@@ -89,7 +88,7 @@ A classe é a informação de qual o 'Channel' de destino daquela mensagem, pois
 
 #### 1.1.5 Content
 	
-É o conteudo do pacote.
+É o conteudo do pacote. Por exemplo, no caso de se adicionar um usuário, o conteúdo seria os dados do usuário.
 
 
 ## 2 Funcionamento
@@ -101,8 +100,30 @@ Foi decidido dividir o trabalho em 2 partes, a primeira trata dos contextos (Con
 
 ### 2.1 Comunicação
 
+Nesta seção será explicadao como os cluster foram organizados e como eles se comunicam. Primeiramente é preciso saber que foram utilizados 3 clusters, sendo eles:
+
+- View
+- Controller
+- Model
 
 
+#### 2.1.1 Configurações Gerais
+
+Neste sistema toda comunicação é feita via UDP que foi escolhido por ser mais rapido, juntamento com o MPING para protocolo de descoberda de membros, pois atravês dele era possível setar qual o porto seria utilizado para receber as mensagens de ping. Para a retransmissão foi utilizado NACKACK2, pois é mais eficiente que o NACKACK e é necessário para o sistem que exista confiabilidade na entrega de mensagens. Para fazer o controle dos membros do cluster foi utilizado o GMS juntamente com o FD_ALL2, pois é neste sistema é de extrema importancia ter uma lista de membros atualizada. Além destes também foi utilizado o FRAG2 para reduzir o desgastes na rede.
+
+**OBS:** Os números setados nas propriedades de cada protocolo não foi baseado em análises do grupo.
+
+#### 2.1.2 Cluster View
+
+O membros do Cluster View praticamente não se comunicam eles apenas se comunicam para manter o controle de uma lista com os membros do Cluster Controller que fazem parte do Contexto de Requisição. Por isso usam a versão mais enxuta do protocolo pensado pelo grupo.
+
+#### 2.1.3 Cluster Controller
+
+É pelo cluster Controller que passa todo o fluxo de requisição do usuário, por isto, além dos protocolos básicos citados acima, colocou-se também o protocolo STABLE, para garantir que ao enviar haja consenso no cluster.
+
+#### 2.1.4 Cluster Model
+
+O cluster Model possui os membros que farão a execução do que foi requisitado pelo usuário, por tanto, é necessário que ele possua o protocolo CENTRAL_LOCK, para garantir que nenhum processo acessará simultâneamente o mesmo recurso.
 
 
 ### 2.2 Contexto
@@ -127,12 +148,11 @@ Assim que uma requisição é feita pelo usuário o sistema montado um 'Pacote' 
 		classe: CONTROLE
 		content: Usuario
 
-Após montado o pacote é enviado para 1 membro do contexto de Coordenação através de um unicast e fica aguardando a resposta.
-
+Após montado o pacote é enviado para 1 membro do contexto de Coordenação através de um unicast e fica aguardando a resposta. Para saber para quem enviar a mensagem o contexto de Requisição sorteia um integrante da lista que ele mantém com os Address dos membros que fazem parte do Contexto de Coordenação. Esta lista possui um número limitado pois como o sistema é pesando para muitos usuários, não compensava manter todos os membros na lista.
 
 #### 2.2.2 Contexto de Coordenação
 
-O Contexto de Coordenação é responsavel por repassar a requisição para o Contexto de Execução, para isto ele sempre envia um anycast para a lista de membros presentes no Contexto de Execução que ele mantém armazada e que é atualizada conforme os membros entram e saem do Channel. Porém apesar de sempre enviar um anycast dependo da operação o tratamento feito é diferente. Por exemplo, uma operação de escrita (GET, GET_ONE, GET_ALL, GET_BY_ID, GET_BY_FILTER) não é necessário nenhum tratamento, então ele simplesmenta envia a requisição ao Contexto de Execução acrescentando à ela um identificador de execucao (token) e espera pela primeira resposta. Caso seja um operação de escrita(POST, POST_ONE, PUT, PUT_ONE, DELETE, DELETE_ONE), é necessário travar os recursos accessados durante a execução no Contexto de Execução, e além disto também deve-se esperar até que todos os membros respondam para verificar se vai ser ou não necessário um rollback.
+O Contexto de Coordenação é responsavel por repassar a requisição para o Contexto de Execução, para isto ele sempre envia um anycast para a lista de membros presentes no Contexto de Execução (diferente da lista armazenada no Contexto Requisição, esta possui todos os membros, pois um membro do Contexto Coordenação seria um servidor e portanto, por mais membros que ele possua ele aguentaria armazenar a lista sem prejuizo para a máquina, onde estaria hospedado) que ele mantém armazada e que é atualizada conforme os membros entram e saem do Channel. Porém apesar de sempre enviar um anycast dependo da operação o tratamento feito é diferente. Por exemplo, uma operação de escrita (GET, GET_ONE, GET_ALL, GET_BY_ID, GET_BY_FILTER) não é necessário nenhum tratamento, então ele simplesmenta envia a requisição ao Contexto de Execução acrescentando à ela um identificador de execucao (token) e espera pela primeira resposta. Caso seja um operação de escrita(POST, POST_ONE, PUT, PUT_ONE, DELETE, DELETE_ONE), é necessário travar os recursos accessados durante a execução no Contexto de Execução, e além disto também deve-se esperar até que todos os membros respondam para verificar se vai ser ou não necessário um rollback.
 
 
 #### 2.2.3 Contexto de Execução
@@ -141,4 +161,54 @@ Simplesmente executa o que é pedido pela requisição armazenando em um hashmap
 
 Ao executar a ação, caso tudo ocorra bem é retornado a mensagem com status 'RECEBIDO', em caso de erro o status será 'ERROR', e é estes status que o Contexto de Coordenação usa para realizar o commit e rollback. Caso um membro retorne um 'ERROR' e outro retorne 'RECEBIDO' então o Contexto de Coordenação envia uma mensagem de ROLLBACK para os membros que executaram corretamente a ação visando desfaze-la. Após realizar o rollback a ação é removida do hashmap, em caso do Contexto de Coordenação enviar COMMIT, a ação correspondende ao identificador_da_operacao é simplesmente removida do hashmap.
 
+
+## 3 Código
+
+### 3.1 Código Network
+
+O código correspondente à parte de comunicação pode ser dividido em estruturas organizadas hierarquicamente, de modo que a primeira herda todas a propriedades das estruturas abaixo dela. Desta forma, a lista das estruturas fica assim:
+1. Server
+2. Receiver
+3. Resource
+4. Observer
+5. Service
+6. Manager
+
+
+#### 3.1.1 Server
+
+Como dito acima a primeira herda todas as propriedades das outras, a primeira é a Server e sua unica função é inicializar canais e variaveis utilizadas pela aplicação.
+
+
+#### 3.1.2 Receiver
+
+O receiver é responsável por fazer o filtro da mensagem recebida no handle, ele verifica para qual classe foi destinada a mensagem, qual ação se deseja fazer e qual a entidade envolvida, com isto ele chama a função que executa a operação referente ao que foi requisitado.
+
+**OBS:** Inicialmente pensamos que estas funções faladas acima estariam na estrutura Resource, porém acabou ficando tudo na 'Service'.
+
+
+#### 3.1.3 Resource
+
+Estrutura responsavel por executar a mensagem recebida pelo handle.
+
+**OBS:** Acabou nem sendo usado direito, ela simplesmente chama as funções feitas no 'Service'.
+
+
+#### 3.1.4 Observer
+
+Estrutura responsavel por ficar em execução, é onde fica rodando a interface com o usuário nos clusters View do Contexto de Requisição, e nos outros é apenas um loop infinito.
+
+
+#### 3.1.5 Service
+
+Nos clusters View e Controller é onde são implementadas as funções que enviam as mensagens pela rede, e no cluster Model é onde são executadas as operações no banco de dados.
+
+
+#### 3.1.6 Manager
+
+É onde é feito todo controle das variaveis necessárias para o sistema funcionar como as listas com os membros do cluster, a lista de controle dos usuarios logados, a lista de controle dos processos executados, entre outros.
+
+### 3.2 Código Persistência
+
+### 3.3 Código Interface
 
